@@ -10,10 +10,8 @@ export default (courses, range, sort = "") => {
   const upper = range[1] ? range[1] : Infinity;
   const filtered = courses.filter(
     (obj) =>
-      obj.prices[0] >= lower &&
-      obj.prices[1] <= upper &&
-      upper >= obj.prices[0] &&
-      obj.prices[0] !== obj.prices[1]
+      obj.prices[0] <= upper &&
+      (obj.prices[0] >= lower || obj.prices[1] >= lower)
   );
 
   if (sort === "htl")
